@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+//  Modelo de Producto
+struct Product: Identifiable {
+    let id = UUID()
+    let nombre: String
+    let precio: String
+    let imagenLocal: String
+    let imagenWeb: String
+}
+
 // Vista Principal
 struct ContentView: View {
     // Lista de productos para mostrar
@@ -32,22 +41,14 @@ struct ContentView: View {
                     .foregroundColor(.white)
                     .padding(.top, 40)
                 
-                // Lista de productos // ESTO NO ENTIENDO NADA MAS
-                ProductListView(productos: productos)// ESTO NO ENTIENDO NADA MAS
+                // Lista de productos
+                ProductListView(ventas: productos)
                     .padding(.horizontal)
             }
         }
     }
 }
 
-//  Modelo de Producto
-struct Product: Identifiable {
-    let id = UUID()
-    let nombre: String
-    let precio: String
-    let imagenLocal: String
-    let imagenWeb: String
-}
 
 // Vista para Mostrar Cada Producto
 struct ProductRowView: View {
@@ -84,12 +85,12 @@ struct ProductRowView: View {
     }
 }
 
-// MARK: - Lista de Productos
+// Lista de Productos
 struct ProductListView: View {
-    let productos: [Product]
+    let ventas: [Product]
     
     var body: some View {
-        List(productos) { product in
+        List(ventas) { product in
             ProductRowView(product: product)
         }
     }
